@@ -1,0 +1,23 @@
+name: jackson
+description: A smart logger for all your projects
+version: 0.0.1
+repository: https://github.com/owlnext-fr/jackson
+documentation: https://github.com/owlnext-fr/jackson
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  logger: ^2.5.0
+  path: ^1.9.1
+  proper_filesize: ^1.0.2
+
+dev_dependencies:
+  lints: ^3.0.0
+  test: ^1.24.0
+  path_provider_platform_interface: ^2.1.2
+
+topics:
+  - logger

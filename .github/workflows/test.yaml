@@ -1,0 +1,33 @@
+name: Test Package
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  flutter-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Get flutter version from .fvmrc json file
+        id: get_flutter_version
+        run: echo "::set-output name=version::$(jq -r '.flutter' .fvmrc)"
+
+      - name: Setup Flutter SDK
+        uses: flutter-actions/setup-flutter@v4
+        with:
+          channel: stable
+          version: ${{ steps.get_flutter_version.outputs.version }}
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze project source
+        run: dart analyze
+
+      - name: Run tests
+        run: flutter test
