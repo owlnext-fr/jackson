@@ -27,68 +27,59 @@ class Logger {
   // endregion
 
   // region methods
-  void t(
-    String message, {
-    Map<String, dynamic>? context,
-  }) {
-    for (AbstractOutput output in _outputs) {
+
+  void t(String message, {String? zone, Map<String, dynamic>? context}) {
+    for (var output in _outputs) {
       if (output.level.index <= Level.trace.index) {
-        output.trace(message, context ?? {});
+        output.trace(message, zone: zone, context: context);
       }
     }
   }
 
-  void d(
-    String message, {
-    Map<String, dynamic>? context,
-  }) {
-    for (AbstractOutput output in _outputs) {
-      if (output.level.index <= Level.debug.index) {
-        output.debug(message, context ?? {});
+  void d(String message, {String? zone, Map<String, dynamic>? context}) {
+    for (var output in _outputs) {
+      if (output.level.index <= Level.trace.index) {
+        output.debug(message, zone: zone, context: context);
       }
     }
   }
 
-  void i(
-    String message, {
-    Map<String, dynamic>? context,
-  }) {
-    for (AbstractOutput output in _outputs) {
-      if (output.level.index <= Level.info.index) {
-        output.info(message, context ?? {});
+  void i(String message, {String? zone, Map<String, dynamic>? context}) {
+    for (var output in _outputs) {
+      if (output.level.index <= Level.trace.index) {
+        output.info(message, zone: zone, context: context);
       }
     }
   }
 
-  void w(
-    String message, {
-    Map<String, dynamic>? context,
-  }) {
-    for (AbstractOutput output in _outputs) {
-      if (output.level.index <= Level.warning.index) {
-        output.warning(message, context ?? {});
+  void w(String message, {String? zone, Map<String, dynamic>? context}) {
+    for (var output in _outputs) {
+      if (output.level.index <= Level.trace.index) {
+        output.warning(message, zone: zone, context: context);
       }
     }
   }
 
-  void e(
-    String message, {
-    Map<String, dynamic>? context,
-  }) {
-    for (AbstractOutput output in _outputs) {
-      if (output.level.index <= Level.error.index) {
-        output.error(message, context ?? {});
+  void e(String message, {String? zone, Map<String, dynamic>? context}) {
+    for (var output in _outputs) {
+      if (output.level.index <= Level.trace.index) {
+        output.error(message, zone: zone, context: context);
       }
     }
   }
 
-  void c(
-    String message, {
-    Map<String, dynamic>? context,
-  }) {
-    for (AbstractOutput output in _outputs) {
-      if (output.level.index <= Level.critical.index) {
-        output.critical(message, context ?? {});
+  void c(String message, {String? zone, Map<String, dynamic>? context}) {
+    for (var output in _outputs) {
+      if (output.level.index <= Level.trace.index) {
+        output.critical(message, zone: zone, context: context);
+      }
+    }
+  }
+
+  void ex(Exception ex, {String? zone, Map<String, dynamic>? context}) {
+    for (var output in _outputs) {
+      if (output.level.index <= Level.trace.index) {
+        output.exception(ex, zone: zone, context: context);
       }
     }
   }
